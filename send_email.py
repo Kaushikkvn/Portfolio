@@ -1,15 +1,12 @@
-import os
 import smtplib
 import ssl
-from dotenv import load_dotenv
-
-load_dotenv()
+import streamlit as st
 
 def send_email(message):
     host = "smtp-relay.brevo.com"
     port = 587
-    username = os.getenv("BREVO_USERNAME")
-    password = os.getenv("BREVO_PASSWORD")
+    username = st.secrets["BREVO_USERNAME"]
+    password = st.secrets["BREVO_PASSWORD"]
     receiver = "venkatakommineni30@gmail.com"
 
     context = ssl.create_default_context()
@@ -18,3 +15,4 @@ def send_email(message):
         server.login(username, password)
         server.sendmail(username, receiver, message)
         print("✅ Email sent!")
+
