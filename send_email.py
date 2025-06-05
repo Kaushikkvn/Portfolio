@@ -1,8 +1,10 @@
 import os
 import smtplib
 import ssl
+from dotenv import load_dotenv
 
-
+# Load environment variables from .env file
+load_dotenv()
 
 def send_email(message):
     host="smtp.gmail.com"
