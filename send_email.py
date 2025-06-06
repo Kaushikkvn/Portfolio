@@ -1,17 +1,17 @@
-import smtplib
-import ssl
-import streamlit as st
+import requests
 
-def send_email(message):
-    host = "smtp-relay.brevo.com"
-    port = 587
-    username = st.secrets["BREVO_USERNAME"]
-    password = st.secrets["BREVO_PASSWORD"]
-    receiver = "venkatakommineni30@gmail.com"
+def send_email(message, user_email):
+    form_url = "https://formsubmit.co/venkatakommineni30@gmail.com"
 
-    context = ssl.create_default_context()
-    with smtplib.SMTP(host, port) as server:
-        server.starttls(context=context)
-        server.login(username, password)
-        server.sendmail(username, receiver, message)
-        print("✅ Email sent!")
+    data = {
+        "name": "Streamlit Contact Form",
+        "email": user_email,
+        "message": message
+    }
+
+    response = requests.post(form_url, data=data)
+
+    if response.status_code == 200:
+        print("✅ Message sent via Formsubmit!")
+    else:
+        print("❌ Failed to send message. Code:", response.status_code)
