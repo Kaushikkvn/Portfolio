@@ -1,7 +1,7 @@
 import requests
 
 def send_email(message, user_email):
-    form_url = "https://formsubmit.co/venkatakommineni30@gmail.com"
+    form_url = "https://formsubmit.co/el/juhuge"
 
     data = {
         "name": "Streamlit Contact Form",
