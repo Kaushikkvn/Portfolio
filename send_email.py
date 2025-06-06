@@ -13,14 +13,14 @@ def send_email(name, email, message):
             "name": name,
             "email": email,
             "message": message,
-            "title": "New Contact Request"
+            "title": "New Contact Message"
         }
     }
 
     try:
         response = requests.post("https://api.emailjs.com/api/v1.0/email/send", json=payload)
         print("📬 DEBUG STATUS:", response.status_code)
-        print("📬 DEBUG RESPONSE:", response.text)
+        print("📬 DEBUG RESPONSE:", response.text)  # <-- this will reveal the real error
         return response.status_code == 200
     except Exception as e:
         print("❌ Exception:", e)
