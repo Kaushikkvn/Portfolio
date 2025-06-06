@@ -10,9 +10,10 @@ def send_email(name, email, message):
         "template_id": template_id,
         "user_id": public_key,
         "template_params": {
-            "from_name": name,
-            "from_email": email,
-            "message": message
+            "name": name,
+            "email": email,
+            "message": message,
+            "title": "New Contact Request"
         }
     }
 
