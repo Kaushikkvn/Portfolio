@@ -2,19 +2,18 @@ import streamlit as st
 from send_email import send_email
 
 st.set_page_config(page_title="Contact Me", page_icon="📬")
-st.header("📬 Contact Me")
+st.title("📬 Contact Me")
 
 with st.form("contact_form"):
-    user_email = st.text_input("Your email address", placeholder="you@example.com")
-    message_body = st.text_area("Your message", height=150)
+    name = st.text_input("Your name")
+    email = st.text_input("Your email")
+    message = st.text_area("Your message")
 
     if st.form_submit_button("Send"):
-        if user_email and message_body:
-            message = f"From: {user_email}\n\n{message_body}"
-            sent = send_email(message, user_email)
-            if sent:
+        if name and email and message:
+            if send_email(name, email, message):
                 st.success("✅ Message sent successfully!")
             else:
-                st.error("❌ Failed to send message. Try again later.")
+                st.error("❌ Failed to send. Please try again later.")
         else:
-            st.warning("⚠️ Please fill in all fields.")
+            st.warning("⚠️ Please fill out all fields.")
