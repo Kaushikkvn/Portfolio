@@ -1,33 +1,31 @@
 import requests
 
-def send_email(message, user_email):
-    form_url = "https://formsubmit.co/el/juhuge"  # your verified endpoint
+def send_email(name, email, message):
+    service_id = "service_dqs7juv"
+    template_id = "template_xu04l3e"
+    public_key = "b-YacL-7og63Yqzic"
 
-    data = {
-        "name": "Streamlit Contact Form",
-        "email": user_email,
-        "message": message,
-        "_autoresponse": "Thanks! I'll get back to you shortly.",
-        "_captcha": "false",
-        "_template": "table"
-    }
-
-    headers = {
-        "User-Agent": "Mozilla/5.0",
-        "Content-Type": "application/x-www-form-urlencoded"
+    payload = {
+        "service_id": service_id,
+        "template_id": template_id,
+        "user_id": public_key,
+        "template_params": {
+            "from_name": name,
+            "from_email": email,
+            "message": message
+        }
     }
 
     try:
-        response = requests.post(form_url, data=data, headers=headers)
-
-        if response.status_code == 200 or response.status_code == 302:
-            print("✅ Form submitted successfully.")
+        response = requests.post("https://api.emailjs.com/api/v1.0/email/send", json=payload)
+        if response.status_code == 200:
+            print("✅ Email sent successfully!")
             return True
         else:
-            print("❌ Failed to submit form. Status:", response.status_code)
-            print(response.text)
+            print("❌ Failed. Status:", response.status_code)
+            print("Response:", response.text)
             return False
-
     except Exception as e:
-        print("❌ Exception:", str(e))
+        print("❌ Exception:", e)
         return False
+
