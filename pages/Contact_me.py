@@ -1,19 +1,19 @@
 import streamlit as st
-from send_email import send_email
 
-st.set_page_config(page_title="Contact Me", page_icon="📬")
-st.title("📬 Contact Me")
+st.set_page_config(page_title="Resume", page_icon="📄")
 
-with st.form("contact_form"):
-    name = st.text_input("Your name")
-    email = st.text_input("Your email")
-    message = st.text_area("Your message")
+st.title("📄 My Resume")
 
-    if st.form_submit_button("Send"):
-        if name and email and message:
-            if send_email(name, email, message):
-                st.success("✅ Message sent successfully!")
-            else:
-                st.error("❌ Failed to send. Please try again later.")
-        else:
-            st.warning("⚠️ Please fill out all fields.")
+st.markdown(
+    """
+    Click the button below to view my resume in a new tab.
+    """
+)
+
+resume_url = "https://your-resume-link.com/resume.pdf"  # replace this with your actual link
+
+st.markdown(f"""
+    <a href="{resume_url}" target="_blank">
+        <button style='padding: 10px 20px; font-size: 16px;'>📄 View Resume</button>
+    </a>
+""", unsafe_allow_html=True)
