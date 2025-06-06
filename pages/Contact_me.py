@@ -10,7 +10,7 @@ st.markdown(
     """
 )
 
-resume_url = "https://github.com/Kaushikkvn/Portfolio/blob/master/KAUSHIK%20KOMMINENI_RESUME_KDOT.pdf"  # replace this with your actual link
+resume_url = "https://drive.google.com/file/d/1csB2Ckh8YgpXOAmAPqjzJ2ixoj7KhyHX/view?usp=sharing"  # replace this with your actual link
 
 st.markdown(f"""
     <a href="{resume_url}" target="_blank">
