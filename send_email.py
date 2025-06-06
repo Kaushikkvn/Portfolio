@@ -18,14 +18,9 @@ def send_email(name, email, message):
 
     try:
         response = requests.post("https://api.emailjs.com/api/v1.0/email/send", json=payload)
-        if response.status_code == 200:
-            print("✅ Email sent successfully!")
-            return True
-        else:
-            print("❌ Failed. Status:", response.status_code)
-            print("Response:", response.text)
-            return False
+        print("📬 DEBUG STATUS:", response.status_code)
+        print("📬 DEBUG RESPONSE:", response.text)
+        return response.status_code == 200
     except Exception as e:
         print("❌ Exception:", e)
         return False
-
