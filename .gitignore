@@ -5,3 +5,5 @@
 ".env" 
 "send_email.py"   # Optional, or rewrite it securely
 ".env" 
+".env" 
+"send_email.py" 
