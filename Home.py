@@ -18,15 +18,15 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("📬 **Get in Touch**")
     st.markdown("📧 kaushik.kommineni@gmail.com")
-    st.markdown("📍 Kansas, USA")
+    st.markdown("[GitHub](https://github.com/Kaushikkvn)")
     st.markdown("[LinkedIn](https://www.linkedin.com/in/kaushik-kommineni)")
-    st.markdown("[Portfolio](https://portfolio-kaushikkommineni.streamlit.app/)")
+    st.markdown("📍 Kansas, USA")
 
 # ---- HOME SECTION ----
 if selected == "Home":
     col1, col2 = st.columns(2)
     with col1:
-        st.image("images/image.jpeg", width=350)
+        st.image("images/Portfolio_pic.jpg", width=700)
 
     with col2:
         st.title("Kaushik Kommineni")
